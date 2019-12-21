@@ -5,7 +5,7 @@
   "author": "imWildCat <wildcat.name@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build-ts": "tsc",
     "test": "jest --config jest.config.js",
     "lint": "eslint --config .eslintrc.js ./src/**/*.ts"
   },

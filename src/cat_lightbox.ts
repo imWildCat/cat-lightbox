@@ -1,5 +1,5 @@
 import { CONTAINER_CLASS_NAME } from './constants';
-export default class CatLightbox {
+class CatLightbox {
   private modalContainerElement?: HTMLDivElement;
   private modalImageElement?: HTMLImageElement;
 
@@ -43,3 +43,5 @@ export default class CatLightbox {
     modalImageElement.style.maxWidth = '100%';
   }
 }
+
+export default CatLightbox;

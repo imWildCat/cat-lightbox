@@ -1,0 +1,17 @@
+{
+  "name": "cat-lightbox",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "imWildCat <wildcat.name@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jest.config.js"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.24",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.4"
+  }
+}

@@ -1,7 +1,8 @@
 import { CONTAINER_CLASS_NAME } from './constants';
 class CatLightbox {
   private modalContainerElement?: HTMLDivElement;
-  private modalImageElement?: HTMLImageElement;
+  private imageWrapperElement?: HTMLDivElement;
+  private imageElement?: HTMLImageElement;
 
   private isShowing = false;
 
@@ -14,10 +15,15 @@ class CatLightbox {
 
     this.modalContainerElement = document.createElement('div');
     this.configureContainerElement(this.modalContainerElement);
-    this.modalImageElement = document.createElement('img');
-    this.configureImageElement(this.modalImageElement);
 
-    this.modalContainerElement.appendChild(this.modalImageElement);
+    this.imageWrapperElement = document.createElement('div');
+    this.configureWrapperElement(this.imageWrapperElement);
+
+    this.imageElement = document.createElement('img');
+    this.configureImageElement(this.imageElement);
+
+    this.imageWrapperElement.appendChild(this.imageElement);
+    this.modalContainerElement.appendChild(this.imageWrapperElement);
 
     document.body.appendChild(this.modalContainerElement);
   }
@@ -26,21 +32,33 @@ class CatLightbox {
     this.show();
   }
 
+  private configureWrapperElement(imageWrapperElement: HTMLDivElement): void {
+    const style = imageWrapperElement.style;
+    style.display = 'flex';
+  }
+
   private configureContainerElement(element: HTMLDivElement): void {
     element.className = CONTAINER_CLASS_NAME;
 
-    element.style.position = 'absolute';
-    element.style.top = '0';
-    element.style.left = '0';
-    element.style.right = '0';
-    element.style.bottom = '0';
-    element.style.overflow = 'auto';
+    const style = element.style;
+    style.display = 'flex';
+    style.alignItems = 'center';
+    style.justifyContent = 'center';
+    style.position = 'absolute';
+    style.top = '0';
+    style.left = '0';
+    style.right = '0';
+    style.bottom = '0';
+    style.overflow = 'auto';
+    style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
   }
 
   private configureImageElement(modalImageElement: HTMLImageElement): void {
+    const style = modalImageElement.style;
     modalImageElement.src = this.element.src;
-    modalImageElement.style.maxHeight = '100%';
-    modalImageElement.style.maxWidth = '100%';
+    style.display = 'flex';
+    style.maxHeight = '100%';
+    style.maxWidth = '100%';
   }
 }
 

@@ -1,7 +1,7 @@
 import CatLightbox from '../cat_lightbox';
 import { CONTAINER_CLASS_NAME } from '../constants';
-describe('lightbox', () => {
 
+describe('lightbox', () => {
   let imageElement: HTMLImageElement;
 
   beforeEach(() => {
@@ -29,7 +29,7 @@ describe('lightbox', () => {
     imageElement.click();
     expect(mockShow).toHaveBeenCalledTimes(1);
     expect((lightbox as any).isShowing).toBeTruthy();
-  })
+  });
 
   it('should show the modal after being clicked', () => {
     new CatLightbox(imageElement);
@@ -42,5 +42,4 @@ describe('lightbox', () => {
     const containerElement = document.querySelector(`.${CONTAINER_CLASS_NAME}`);
     expect(containerElement).not.toBeNull();
   });
-
 });

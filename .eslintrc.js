@@ -20,7 +20,7 @@ module.exports = {
         './src/__tests__/*.ts'
       ],
       rules: {
-        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-explicit-any': 'off', // Allow any for type casting for tests only
       },
     }
   ]

@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "jest.pathToJest": "node node_modules/jest/bin/jest.js"
+}

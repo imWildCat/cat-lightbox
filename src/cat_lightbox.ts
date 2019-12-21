@@ -1,13 +1,13 @@
-import { CONTAINER_CLASS_NAME } from './constants';
+import { CONTAINER_CLASS_NAME, DEFAULT_CLOSE_SYMBOL } from './constants';
 class CatLightbox {
-  private modalContainerElement!: HTMLDivElement;
-  private imageWrapperElement!: HTMLDivElement;
-  private imageElement!: HTMLImageElement;
-  private closeButton!: HTMLDivElement;
+  private modalContainerElement!: HTMLDivElement | null;
+  private imageWrapperElement!: HTMLDivElement | null;
+  private imageElement!: HTMLImageElement | null;
+  private closeButton!: HTMLDivElement | null;
 
   private isShowing = false;
 
-  private closeSymbol = '&times';
+  private closeSymbol = DEFAULT_CLOSE_SYMBOL;
 
   constructor(private element: HTMLImageElement) {
     element.addEventListener('click', this.onOriginalElementClick.bind(this));
@@ -32,10 +32,21 @@ class CatLightbox {
     this.imageElement = document.createElement('img');
     this.configureImageElement();
 
+    this.imageWrapperElement.appendChild(this.closeButton);
     this.imageWrapperElement.appendChild(this.imageElement);
     this.modalContainerElement.appendChild(this.imageWrapperElement);
 
     document.body.appendChild(this.modalContainerElement);
+  }
+
+  private dismiss(): void {
+    this.modalContainerElement?.parentElement?.removeChild(this.modalContainerElement);
+
+    // Clean up references
+    this.modalContainerElement = null;
+    this.imageWrapperElement = null;
+    this.imageElement = null;
+    this.closeButton = null;
   }
 
   private onOriginalElementClick(): void {
@@ -43,11 +54,16 @@ class CatLightbox {
   }
 
   private configureWrapperElement(): void {
-    const style = this.imageWrapperElement.style;
-    style.display = 'flex';
+    const style = this.imageWrapperElement?.style;
+    if (style) {
+      style.display = 'flex';
+    }
   }
 
   private configureContainerElement(): void {
+    if (!this.modalContainerElement) {
+      return;
+    }
     this.modalContainerElement.className = CONTAINER_CLASS_NAME;
 
     const style = this.modalContainerElement.style;
@@ -64,6 +80,9 @@ class CatLightbox {
   }
 
   private configureImageElement(): void {
+    if (!this.imageElement) {
+      return;
+    }
     const style = this.imageElement.style;
     this.imageElement.src = this.element.src;
     style.display = 'flex';
@@ -72,7 +91,16 @@ class CatLightbox {
   }
 
   private configureCloseButton(): void {
+    const closeButton = this.closeButton;
+    if (!closeButton) {
+      return;
+    }
+    closeButton.addEventListener('click', this.dismiss.bind(this));
+    closeButton.innerHTML = this.closeSymbol;
 
+    const style = closeButton.style;
+    style.cursor = 'pointer';
+    style.padding = '5px';
   }
 }
 

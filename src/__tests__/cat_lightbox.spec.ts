@@ -1,4 +1,5 @@
 import CatLightbox from '../cat_lightbox';
+import { CONTAINER_CLASS_NAME } from '../constants';
 describe('lightbox', () => {
 
   let imageElement: HTMLImageElement;
@@ -10,12 +11,17 @@ describe('lightbox', () => {
     document.body.appendChild(imageElement);
   });
 
+  afterEach(() => {
+    // Reset body
+    document.body.innerHTML = '';
+  });
+
   it('can be initialized', () => {
     const lightbox = new CatLightbox(imageElement);
     expect(lightbox).not.toBeNull();
   });
 
-  it('the related image can be clicked', () => {
+  it('can be clicked', () => {
     const lightbox = new CatLightbox(imageElement);
     const mockShow = jest.spyOn<any, any>(lightbox, 'show');
 
@@ -24,5 +30,17 @@ describe('lightbox', () => {
     expect(mockShow).toHaveBeenCalledTimes(1);
     expect((lightbox as any).isShowing).toBeTruthy();
   })
+
+  it('should show the modal after being clicked', () => {
+    new CatLightbox(imageElement);
+
+    const containerElementNull = document.querySelector(`.${CONTAINER_CLASS_NAME}`);
+    expect(containerElementNull).toBeNull();
+
+    imageElement.click();
+
+    const containerElement = document.querySelector(`.${CONTAINER_CLASS_NAME}`);
+    expect(containerElement).not.toBeNull();
+  });
 
 });

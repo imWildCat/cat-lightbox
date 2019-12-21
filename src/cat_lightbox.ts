@@ -1,3 +1,4 @@
+import { CONTAINER_CLASS_NAME } from './constants';
 export default class CatLightbox {
 
   private modalContainerElement?: HTMLDivElement;
@@ -27,6 +28,8 @@ export default class CatLightbox {
   }
 
   private configureContainerElement(element: HTMLDivElement) {
+    element.className = CONTAINER_CLASS_NAME;
+
     element.style.position = 'absolute';
     element.style.top = '0';
     element.style.left = '0';

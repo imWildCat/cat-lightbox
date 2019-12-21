@@ -65,5 +65,5 @@ typings/
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# Lib build
-lib/
+# Distribution
+dist/

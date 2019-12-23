@@ -1,6 +1,6 @@
 {
   "name": "cat-lightbox",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "main": "index.js",
   "author": "imWildCat <wildcat.name@gmail.com>",
   "license": "MIT",
@@ -9,7 +9,11 @@
     "build:ts": "tsc",
     "test": "jest --config jest.config.js",
     "lint": "eslint --config .eslintrc.js ./src/**/*.ts",
-    "dev:watch": "webpack --watch"
+    "dev:watch": "webpack --watch",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/jest": "^24.0.24",
@@ -26,5 +30,8 @@
     "typescript": "^3.7.4",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
-  }
+  },
+  "files": [
+    "dist/**/*"
+  ]
 }

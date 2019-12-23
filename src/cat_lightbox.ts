@@ -47,6 +47,8 @@ class CatLightbox {
     this.imageWrapperElement = null;
     this.imageElement = null;
     this.closeButton = null;
+
+    this.isShowing = false;
   }
 
   private onOriginalElementClick(): void {

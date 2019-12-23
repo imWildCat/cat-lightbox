@@ -59,6 +59,7 @@ class CatLightbox {
     const style = this.imageWrapperElement?.style;
     if (style) {
       style.display = 'flex';
+      style.position = 'relative';
     }
   }
 
@@ -109,8 +110,23 @@ class CatLightbox {
     closeButton.innerHTML = this.closeSymbol;
 
     const style = closeButton.style;
+
+    style.position = 'absolute';
+    style.display = 'flex';
+    style.justifyContent = 'center';
+    style.alignItems = 'center';
+
+    style.padding = '2px';
+    style.top = '-25px';
+    style.right = '-25px';
+    style.width = '23px';
+    style.height = '23px';
+    style.fontSize = '20px';
+
+    style.color = 'white';
+    style.backgroundColor = 'black';
+    style.borderRadius = '20px';
     style.cursor = 'pointer';
-    style.padding = '5px';
   }
 }
 

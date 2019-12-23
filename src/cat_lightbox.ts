@@ -79,6 +79,14 @@ class CatLightbox {
     style.bottom = '0';
     style.overflow = 'auto';
     style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    style.opacity = '0';
+    style.transition = 'opacity 0.25s ease';
+
+    setTimeout(() => {
+      window.requestAnimationFrame(() => {
+        style.opacity = '1';
+      });
+    });
   }
 
   private configureImageElement(): void {

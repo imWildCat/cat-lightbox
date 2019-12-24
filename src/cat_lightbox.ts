@@ -1,5 +1,5 @@
 import { CONTAINER_CLASS_NAME, DEFAULT_CLOSE_SYMBOL } from './constants';
-class CatLightbox {
+export default class CatLightbox {
   private modalContainerElement!: HTMLDivElement | null;
   private imageWrapperElement!: HTMLDivElement | null;
   private imageElement!: HTMLImageElement | null;
@@ -129,5 +129,3 @@ class CatLightbox {
     style.cursor = 'pointer';
   }
 }
-
-export default CatLightbox;

@@ -15,7 +15,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     libraryTarget: 'umd',
-    libraryExport: 'CatLightbox',
+    // libraryExport: 'default',
     library: 'CatLightbox',
     umdNamedDefine: true,
   },

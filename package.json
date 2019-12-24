@@ -1,6 +1,6 @@
 {
   "name": "cat-lightbox",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/cat_lightbox.js",
   "types": "dist/cat_lightbox.d.ts",
   "author": "imWildCat <wildcat.name@gmail.com>",
